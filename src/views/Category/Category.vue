@@ -19,11 +19,26 @@
 
 <script>
 import CategoryBox from '../../components/Category/CategoryBox';
+var axios =  require('axios');
 export default {
   name: 'Category',
   components : {CategoryBox},
-  props : [ "baseURL" , "categories" ],
+  data() {
+    return {
+      baseURL : "https://limitless-lake-55070.herokuapp.com/",
+      categories : null,
+    }
+  },
+  methods: {
+    async getCategories() {
+      //fetch categories
+      await axios.get(this.baseURL + "category/")
+      .then(res => this.categories = res.data)
+      .catch(err => console.log(err))
+    }
+  },
   mounted(){
+    this.getCategories();
   }
 }
 </script>
