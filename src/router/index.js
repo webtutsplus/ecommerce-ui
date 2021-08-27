@@ -31,6 +31,11 @@ const routes = [
     name: "AdminCategory",
     component: Category,
   },
+  {
+    path: "/admin/category/:id",
+    name: "EditCategory",
+    component: EditCategory,
+  },
 ];
 
 const router = new VueRouter({
