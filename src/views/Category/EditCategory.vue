@@ -43,15 +43,16 @@ export default {
       categoryIndex : null
     }
   },
-  props : ["baseURL", "categories"],
+  // change to single category
+  props : ["baseURL", "category"],
   methods : {
     async editCategory() {
+      // change var name to edit category
       const newCategory = {
         id : this.id,
         categoryName : this.categoryName,
         description : this.description,
         imageUrl : this.imageUrl,
-        products : null
       }
 
       await axios({
@@ -64,8 +65,8 @@ export default {
       })
       .then(() => {
           //sending the event to parent to handle
-        this.$emit("fetchData");
-        this.$router.push({name:'AdminCategory'});
+        // this.$emit("fetchData");
+        // this.$router.push({name:'AdminCategory'});
         swal({
           text: "Category Updated Successfully!",
           icon: "success",
@@ -77,11 +78,11 @@ export default {
   },
   mounted() {
     this.id = this.$route.params.id;
-    this.categoryIndex = this.categories.findIndex(category => category.id == this.id);
     //input fields
-    this.categoryName = this.categories[this.categoryIndex].categoryName;
-    this.description = this.categories[this.categoryIndex].description;
-    this.imageUrl = this.categories[this.categoryIndex].imageUrl;
+    console.log(this.category)
+    this.categoryName = this.category.categoryName;
+    this.description = this.category.description;
+    this.imageUrl = this.category.imageUrl;
   }
 }
 </script>
