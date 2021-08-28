@@ -1,96 +1,59 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="col-12 text-center">
-        <h4 class="pt-3">Edit Category</h4>
-      </div>
+  <div class="card h-100">
+    <div class="embed-responsive embed-responsive-16by9">
+      <img class="card-img-top embed-responsive-item" :src="category.imageUrl" alt="Category Image">
     </div>
 
-    <div class="row">
-      <div class="col-3"></div>
-      <div class="col-md-6 px-5 px-md-0">
-        <form>
-          <div class="form-group">
-            <label>Category Name</label>
-            <input type="text" class="form-control" v-model="categoryName" required>
-          </div>
-          <div class="form-group">
-            <label>Description</label>
-            <input type="text" class="form-control" v-model="description" required>
-          </div>
-          <div class="form-group">
-            <label>ImageURL</label>
-            <input type="url" class="form-control" v-model="imageUrl" required>
-          </div>
-          <button type="button" class="btn btn-primary" @click="editCategory">Submit</button>
-        </form>
-      </div>
-      <div class="col-3"></div>
+    <div class="card-body">
+      <router-link :to="{ name: 'ListProducts', params: { id : category.id } }"><h5 class="card-title">{{category.categoryName}}</h5></router-link>
+      <p class="card-text font-italic">{{category.description.substring(0,65)}}...</p>
+      <router-link id="edit-category" :to="{ name: 'EditCategory', params: { id : category.id, category: category } }" >
+        Edit
+      </router-link>
     </div>
   </div>
 </template>
 
 <script>
-var axios =  require('axios')
-import swal from 'sweetalert';
 export default {
-  data(){
-    return {
-      id : null,
-      categoryName : null,
-      description : null,
-      imageUrl : null,
-      categoryIndex : null
+    name : "CategoryBox",
+    props : ["category"],
+    methods : {
+        
     }
-  },
-  // change to single category
-  props : ["baseURL", "category"],
-  methods : {
-    async editCategory() {
-      // change var name to edit category
-      const newCategory = {
-        id : this.id,
-        categoryName : this.categoryName,
-        description : this.description,
-        imageUrl : this.imageUrl,
-      }
-
-      await axios({
-        method: 'post',
-        url: this.baseURL+"category/update/"+this.id,
-        data : JSON.stringify(newCategory),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-      .then(() => {
-          //sending the event to parent to handle
-        // this.$emit("fetchData");
-        // this.$router.push({name:'AdminCategory'});
-        swal({
-          text: "Category Updated Successfully!",
-          icon: "success",
-          closeOnClickOutside: false,
-        });
-      })
-      .catch(err => console.log(err));
-    }
-  },
-  mounted() {
-    this.id = this.$route.params.id;
-    //input fields
-    console.log(this.category)
-    this.categoryName = this.category.categoryName;
-    this.description = this.category.description;
-    this.imageUrl = this.category.imageUrl;
-  }
 }
-</script>
+</script> 
 
 <style scoped>
-h4 {
-  font-family: 'Roboto', sans-serif;
+
+.card{
+  width : 20rem;
+  height : 24rem;
+}
+
+.embed-responsive .card-img-top {
+  object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+}
+
+.card-title {
   color: #484848;
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.card-title:hover {
+  font-weight: bold;
+}
+
+.card-text {
+  font-size: 0.9rem;
+}
+
+#edit-category {
+  float: right;
 }
 </style>
