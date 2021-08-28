@@ -4,6 +4,7 @@ import Home from "../views/Home.vue";
 import AddCategory from "../views/Category/AddCategory";
 import Category from "../views/Category/Category";
 import EditCategory from "../views/Category/EditCategory";
+import AddProduct from "../views/Product/AddProduct";
 
 Vue.use(VueRouter);
 
@@ -36,7 +37,12 @@ const routes = [
     path: "/admin/category/:id",
     name: "EditCategory",
     component: EditCategory,
-    props: true
+    props: true,
+  },
+  {
+    path: "/admin/product/add",
+    name: "AddProduct",
+    component: AddProduct,
   },
 ];
 
