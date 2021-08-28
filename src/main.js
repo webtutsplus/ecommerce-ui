@@ -9,6 +9,8 @@ window.axios = require('axios')
 import swal from 'sweetalert';
 window.Swal = swal;
 
+window.axios = require('axios')
+
 new Vue({
   router,
   render: h => h(App)

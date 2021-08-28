@@ -7,7 +7,7 @@
     <div class="card-body">
       <router-link :to="{ name: 'ListProducts', params: { id : category.id } }"><h5 class="card-title">{{category.categoryName}}</h5></router-link>
       <p class="card-text font-italic">{{category.description.substring(0,65)}}...</p>
-      <router-link id="edit-category" :category="category" :to="{ name: 'EditCategory', params: { id : category.id } }" >
+      <router-link id="edit-category" :to="{ name: 'EditCategory', params: { id : category.id, category: category  } }" >
         Edit
       </router-link>
     </div>
@@ -19,10 +19,10 @@ export default {
     name : "CategoryBox",
     props : ["category"],
     methods : {
-        
+
     }
 }
-</script> 
+</script>
 
 <style scoped>
 
