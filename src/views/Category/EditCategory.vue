@@ -43,12 +43,10 @@ export default {
       categoryIndex : null
     }
   },
-  // change to single category
   props : ["baseURL", "category"],
   methods : {
     async editCategory() {
-      // change var name to edit category
-      const newCategory = {
+      const updatedCategory = {
         id : this.id,
         categoryName : this.categoryName,
         description : this.description,
@@ -58,15 +56,12 @@ export default {
       await axios({
         method: 'post',
         url: this.baseURL+"category/update/"+this.id,
-        data : JSON.stringify(newCategory),
+        data : JSON.stringify(updatedCategory),
         headers: {
           'Content-Type': 'application/json'
         }
       })
       .then(() => {
-          //sending the event to parent to handle
-        // this.$emit("fetchData");
-        // this.$router.push({name:'AdminCategory'});
         swal({
           text: "Category Updated Successfully!",
           icon: "success",
