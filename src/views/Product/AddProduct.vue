@@ -46,7 +46,6 @@ import swal from 'sweetalert';
 export default {
   data(){
     return {
-      id : null,
       categoryId : null,
       name : null,
       description : null,
@@ -58,7 +57,6 @@ export default {
   methods : {
     async addProduct() {
       const newProduct = {
-        id : this.id,
         categoryId : this.categoryId,
         name : this.name,
         description : this.description,
@@ -75,9 +73,6 @@ export default {
         }
       })
       .then(() => {
-        //sending the event to parent to handle
-        this.$emit("fetchData");
-        this.$router.push({name : 'AdminProduct'});
         swal({
           text: "Product Added Successfully!",
           icon: "success",
