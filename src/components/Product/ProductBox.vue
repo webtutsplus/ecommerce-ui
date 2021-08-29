@@ -7,6 +7,9 @@
       <h5 class="card-title">{{product.name}}</h5>
       <p class="card-text"><sup>$</sup>{{product.price}}</p>
       <p class="card-text font-italic">{{product.description.substring(0,65)}}...</p>
+      <router-link id="edit-product" :to="{name : 'EditProduct', params : {id : product.id} }" v-show="$route.name=='AdminProduct'">
+        Edit
+      </router-link>
     </div>
   </div>
 </template>
