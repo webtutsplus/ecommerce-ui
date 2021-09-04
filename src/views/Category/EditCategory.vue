@@ -40,10 +40,11 @@ export default {
       categoryName : null,
       description : null,
       imageUrl : null,
-      categoryIndex : null
+      categoryIndex : null,
+      baseURL : "https://limitless-lake-55070.herokuapp.com/",
     }
   },
-  props : ["baseURL", "category"],
+  props : ["category"],
   methods : {
     async editCategory() {
       const updatedCategory = {
