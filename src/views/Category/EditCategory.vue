@@ -40,11 +40,10 @@ export default {
       categoryName : null,
       description : null,
       imageUrl : null,
-      categoryIndex : null,
-      baseURL : "https://limitless-lake-55070.herokuapp.com/",
+      categoryIndex : null
     }
   },
-  props : ["category", "userId"],
+  props : ["baseURL", "categories"],
   methods : {
     async editCategory() {
       const updatedCategory = {
@@ -74,9 +73,7 @@ export default {
   },
   mounted() {
     this.id = this.$route.params.id;
-    this.category_router = this.$route.params.category;
-    //input fields
-    console.log("why not passing", this.id, this.userId, "category_router", this.category_router,  this.category, typeof this.category, JSON.stringify(this.category[0]), JSON.stringify(this.category.categoryName));
+    this.category = this.categories.filter(category => category.id == this.id)[0];
     this.categoryName = this.category.categoryName;
     this.description = this.category.description;
     this.imageUrl = this.category.imageUrl;

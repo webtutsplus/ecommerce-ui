@@ -32,8 +32,7 @@ const routes = [
   {
     path: "/admin/category/:id",
     name: "EditCategory",
-    component: EditCategory,
-    props: true,
+    component: EditCategory
   }
 ];
 
