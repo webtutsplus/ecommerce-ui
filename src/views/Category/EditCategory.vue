@@ -31,7 +31,7 @@
 </template>
 
 <script>
-var axios =  require('axios')
+const axios =  require('axios')
 import swal from 'sweetalert';
 export default {
   data(){
@@ -43,12 +43,10 @@ export default {
       categoryIndex : null
     }
   },
-  // change to single category
-  props : ["baseURL", "category"],
+  props : ["baseURL", "categories"],
   methods : {
     async editCategory() {
-      // change var name to edit category
-      const newCategory = {
+      const updatedCategory = {
         id : this.id,
         categoryName : this.categoryName,
         description : this.description,
@@ -58,15 +56,12 @@ export default {
       await axios({
         method: 'post',
         url: this.baseURL+"category/update/"+this.id,
-        data : JSON.stringify(newCategory),
+        data : JSON.stringify(updatedCategory),
         headers: {
           'Content-Type': 'application/json'
         }
       })
       .then(() => {
-          //sending the event to parent to handle
-        // this.$emit("fetchData");
-        // this.$router.push({name:'AdminCategory'});
         swal({
           text: "Category Updated Successfully!",
           icon: "success",
@@ -78,8 +73,7 @@ export default {
   },
   mounted() {
     this.id = this.$route.params.id;
-    //input fields
-    console.log(this.category)
+    this.category = this.categories.filter(category => category.id == this.id)[0];
     this.categoryName = this.category.categoryName;
     this.description = this.category.description;
     this.imageUrl = this.category.imageUrl;
