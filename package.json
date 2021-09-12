@@ -11,8 +11,13 @@
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "sweetalert": "^2.1.2",
-    "vue": "^2.6.11",
-    "vue-router": "^3.5.2"
+    "bootstrap": "^4.5.3",
+    "eslint-plugin-vue": "^7.3.0",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1",
+    "stripe": "^8.137.0",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0-0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
@@ -22,7 +27,8 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "@vue/compiler-sfc": "^3.0.0"
   },
   "eslintConfig": {
     "root": true,
