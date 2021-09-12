@@ -31,7 +31,7 @@
 </template>
 
 <script>
-var axios =  require('axios')
+const axios =  require('axios')
 import swal from 'sweetalert';
 export default {
   data(){
@@ -44,7 +44,7 @@ export default {
       baseURL : "https://limitless-lake-55070.herokuapp.com/",
     }
   },
-  props : ["category"],
+  props : ["category", "userId"],
   methods : {
     async editCategory() {
       const updatedCategory = {
@@ -74,8 +74,9 @@ export default {
   },
   mounted() {
     this.id = this.$route.params.id;
+    this.category_router = this.$route.params.category;
     //input fields
-    console.log(this.category)
+    console.log("why not passing", this.id, this.userId, "category_router", this.category_router,  this.category, typeof this.category, JSON.stringify(this.category[0]), JSON.stringify(this.category.categoryName));
     this.categoryName = this.category.categoryName;
     this.description = this.category.description;
     this.imageUrl = this.category.imageUrl;
