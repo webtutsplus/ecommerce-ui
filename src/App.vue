@@ -13,6 +13,7 @@
     </div>
     <Footer />
   </div>
+  <router-view/>
 </template>
 
 <script>
