@@ -1,12 +1,9 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import { createRouter, createWebHistory } from 'vue-router'
+import Home from '../views/Home.vue'
 import AddCategory from "../views/Category/AddCategory";
 import Category from "../views/Category/Category";
 import EditCategory from "../views/Category/EditCategory";
 import AddProduct from "../views/Product/AddProduct";
-
-Vue.use(VueRouter);
 
 const routes = [
   {
@@ -28,19 +25,17 @@ const routes = [
     path: "/admin/category/:id",
     name: "EditCategory",
     component: EditCategory,
-    props: true,
   },
   {
     path: "/admin/product/add",
     name: "AddProduct",
     component: AddProduct,
-  },
+  }
 ];
 
-const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes,
-});
+const router = createRouter({
+  history: createWebHistory(process.env.BASE_URL),
+  routes
+})
 
-export default router;
+export default router
