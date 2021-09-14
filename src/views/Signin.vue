@@ -43,6 +43,8 @@
 </template>
 
 <script>
+const axios = require('axios')
+import swal from 'sweetalert';
 export default {
   name: 'Signin',
   props : [ "baseURL"],
@@ -54,7 +56,49 @@ export default {
     }
   },
   methods : {
+    async signin(e) {
+      e.preventDefault();
+      // set loading to true
+      this.loading = true;
 
+      // request body
+      const user = {
+        email: this.email,
+        password: this.password
+      }
+      // api call
+      await axios({
+        method: 'post',
+        url: this.baseURL + "user/signIn",
+        data : JSON.stringify(user),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(res => {
+        // login successful, we will get token in res.data object
+        localStorage.setItem('token', res.data.token);
+        // // redirect to home page
+        this.$router.replace("/");
+        swal({
+          text: "Login successful. Please continue",
+          icon: "success"
+        });
+      })
+      .catch(err => {
+        // error handling and showing sweet alert
+        swal({
+          text: "Unable to Log you in!",
+          icon: "error",
+          closeOnClickOutside: false,
+        });
+        console.log(err);
+      })
+      .finally(() => {
+        // set loading false
+        this.loading = false;
+      })
+    }
   },
   mounted() {
     this.loading = false;

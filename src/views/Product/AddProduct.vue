@@ -41,7 +41,7 @@
 </template>
 
 <script>
-var axios = require('axios')
+const axios = require('axios')
 import swal from 'sweetalert';
 export default {
   data(){
