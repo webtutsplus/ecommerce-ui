@@ -79,7 +79,7 @@ export default {
         // login successful, we will get token in res.data object
         localStorage.setItem('token', res.data.token);
         // // redirect to home page
-        this.$router.replace("/");
+        this.$router.push({name:'Home'});
         swal({
           text: "Login successful. Please continue",
           icon: "success"
