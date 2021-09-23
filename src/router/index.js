@@ -9,6 +9,7 @@ import EditProduct from "../views/Product/EditProduct";
 import ShowDetails from "../views/Product/ShowDetails";
 import Signup from "../views/Signup";
 import Signin from "../views/Signin";
+import WishList from "../views/Product/WishList";
 
 const routes = [
   {
@@ -61,6 +62,11 @@ const routes = [
     name: 'Signin',
     component: Signin
   },
+  {
+    path: '/wishlist',
+    name: 'WishList',
+    component: WishList
+  }
 ];
 
 const router = createRouter({
