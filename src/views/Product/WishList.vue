@@ -17,7 +17,6 @@
 
 <script>
 const axios = require('axios')
-
 import ProductBox from '../../components/Product/ProductBox';
 export default {
     data() {
