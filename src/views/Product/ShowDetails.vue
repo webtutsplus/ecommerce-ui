@@ -28,6 +28,12 @@
                             @click="addToWishList(this.id)">
                         Add to wishlist
                     </button>
+
+                    <!-- Add to cart button-->
+                    <button type="button" id="add-to-cart-button" class="btn" @click="addToCart(this.id)">
+                        Add to Cart
+                        <ion-icon name="cart-outline" v-pre></ion-icon>
+                    </button>
                 </div>
 
                 <!-- Dummy placeholder features -->
@@ -62,6 +68,7 @@ export default {
     },
     props : ["baseURL","products", "categories"],
     methods:{
+        // add to wishlist
         addToWishList(productId){
             axios.post(`${this.baseURL}wishlist/add?token=${this.token}`, {
                 id:productId
@@ -82,6 +89,32 @@ export default {
 
             });
         },
+
+        // add to cart function
+        addToCart(productId){
+            // post productId and quantity
+            axios.post(`${this.baseURL}cart/add?token=${this.token}`,{
+                productId : productId,
+                quantity : this.quantity
+            }).then((response) => {
+                // success
+                if(response.status==201){
+                    swal({
+                        text: "Product Added to the cart!",
+                        icon: "success",
+                        closeOnClickOutside: false,
+                    });
+                }
+            },(error) =>{
+                // error handling
+                console.log(error)
+                swal({
+                    text: "Something wrong with add to cart",
+                    icon: "error",
+                    closeOnClickOutside: false,
+                });
+            });
+        },
     },
     mounted() {
         this.id = this.$route.params.id;
@@ -93,20 +126,20 @@ export default {
 </script>
 
 <style>
-    .category {
-        font-weight: 400;
-    }
+.category {
+    font-weight: 400;
+}
 
-    /* Chrome, Safari, Edge, Opera */
-    input::-webkit-outer-spin-button,
-    input::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
 
-    /* Firefox */
-    input[type=number] {
-        -moz-appearance: textfield;
-    }
+#add-to-cart-button {
+    background-color: #febd69;
+}
+
 
 </style>
