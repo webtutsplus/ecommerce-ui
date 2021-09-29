@@ -12,7 +12,8 @@
     "core-js": "^3.6.5",
     "sweetalert": "^2.1.2",
     "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0"
+    "vue-router": "^4.0.0-0",
+    "stripe": "^8.137.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
