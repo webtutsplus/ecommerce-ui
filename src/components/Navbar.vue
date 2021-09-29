@@ -52,6 +52,9 @@
           <a class="dropdown-item" v-if="token" href="#" @click="signout">Sign Out</a>
       </div>
     </li>
+    <li class="nav-item">
+      <router-link class="text-light" :to="{name : 'Cart'}"><i class="fa fa-shopping-cart" style="font-size:36px"></i></router-link>
+    </li>
   </nav>
 
 </template>
