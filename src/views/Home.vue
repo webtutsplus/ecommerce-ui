@@ -61,7 +61,7 @@
       this.category_size = Math.min(6, this.category_size);
 
       this.product_size = this.products.length;
-      this.product_size = Math.min(8, this.category_size);
+      this.product_size = Math.min(8, this.product_size);
     }
   }
 </script>
