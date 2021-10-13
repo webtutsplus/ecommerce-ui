@@ -42,10 +42,9 @@
               Accounts
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-<!--              implement three dropdown items-->
-<!--              1. Log In (if user is not logged in )-->
-<!--              2. Sign Up (if user is not logged in )-->
-<!--              3. Log out (only show if user is logged in)-->
+              <router-link class="dropdown-item" v-if="!token" :to="{name: 'Signin'}">Log In</router-link>
+              <router-link class="dropdown-item" v-if="!token" :to="{name: 'Signup'}">Sign Up</router-link>
+              <a class="dropdown-item" v-if="token" href="#">Sign Out</a>
           </div>
       </li>
     </div>
@@ -54,11 +53,20 @@
 </template>
 
 <script>
+//import swal from 'sweetalert';
 export default {
   name : "Navbar",
   data() {
   },
   methods: {
+      signout() {
+         /*
+            trigger this function and
+            1. delete the token from local storage
+            2. redirect to home page
+            3. show a sweet alert
+          */
+      }
   },
 }
 </script>
