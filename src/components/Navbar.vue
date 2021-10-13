@@ -25,14 +25,29 @@
           </div>
         </div>
       </form>
-        <div>
-            <router-link style="color: white" :to="{name : 'AdminCategory'}">
-                Category |
-            </router-link>
-            <router-link style="color: white" :to="{name : 'AdminProduct'}">
-                Products
-            </router-link>
-        </div>
+      <!--      Admin drop down-->
+      <li class="nav-item dropdown">
+          <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdownAdmin" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Admin
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownAdmin">
+              <router-link class="dropdown-item" :to="{name : 'AdminCategory'}">Category</router-link>
+              <router-link class="dropdown-item" :to="{name : 'AdminProduct'}">Products</router-link>
+          </div>
+      </li>
+
+      <!--      Account drop down-->
+      <li class="nav-item dropdown">
+          <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Accounts
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+<!--              implement three dropdown items-->
+<!--              1. Log In (if user is not logged in )-->
+<!--              2. Sign Up (if user is not logged in )-->
+<!--              3. Log out (only show if user is logged in)-->
+          </div>
+      </li>
     </div>
   </nav>
 
