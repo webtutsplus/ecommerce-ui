@@ -7,6 +7,8 @@
         </div>
 
         <!-- TODO       Loop through orderItems and display each item-->
+
+        <!--        Display the total price-->
     </div>
 </template>
 
