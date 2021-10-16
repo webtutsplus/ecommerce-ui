@@ -12,7 +12,7 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-<!--      Search Bar-->
+    <!--      Search Bar-->
       <form class="form-inline ml-auto mr-auto">
         <div class="input-group">
           <input size="100" type="text" class="form-control" placeholder="Search Items" aria-label="Username" aria-describedby="basic-addon1">
@@ -25,10 +25,7 @@
           </div>
         </div>
       </form>
-    </div>
-    <div>
-    </div>
-<!--      Admin drop down-->
+    <!--      Admin drop down-->
     <li class="nav-item dropdown">
       <a class="nav-link text-light dropdown-toggle" href="#" id="navbarDropdownAdmin" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Admin
@@ -47,6 +44,7 @@
       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <router-link class="dropdown-item" v-if="!token" :to="{name: 'Signin'}">WishList</router-link>
           <router-link class="dropdown-item" v-else :to="{name : 'WishList'}" >WishList</router-link>
+          <router-link class="dropdown-item" v-if="token" :to="{name : 'OrderHistory'}" >Order History</router-link>
           <router-link class="dropdown-item" v-if="!token" :to="{name: 'Signin'}">Log In</router-link>
           <router-link class="dropdown-item" v-if="!token" :to="{name: 'Signup'}">Sign Up</router-link>
           <a class="dropdown-item" v-if="token" href="#" @click="signout">Sign Out</a>
@@ -55,6 +53,7 @@
     <li class="nav-item">
       <router-link class="text-light" :to="{name : 'Cart'}"><i class="fa fa-shopping-cart" style="font-size:36px"></i></router-link>
     </li>
+    </div>
   </nav>
 
 </template>
