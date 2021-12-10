@@ -40,8 +40,9 @@ export default {
       };
       await axios
         .post(`${this.baseURL}user/signIn`, body)
-        .then(() => {
+        .then((res) => {
           this.$router.replace("/");
+          localStorage.setItem("token", res.data.token);
           swal({
             text: "Login successful",
             icon: "success",

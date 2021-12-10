@@ -8,6 +8,7 @@ import AddProduct from "../views/Product/AddProduct";
 import EditCategory from "../views/Category/EditCategory";
 import EditProduct from "../views/Product/EditProduct";
 import ShowDetails from "../views/Product/ShowDetails";
+import WishList from "../views/Product/WishList";
 import ListProducts from "../views/Category/ListProducts";
 import Signup from "../views/Signup";
 import Signin from '../views/Signin';
@@ -82,6 +83,11 @@ const routes = [
     path: '/signin',
     name: 'Signin',
     component: Signin
+  },
+  {
+    path: '/wishlist',
+    name: 'WishList',
+    component: WishList
   }
 ]
 
