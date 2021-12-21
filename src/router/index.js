@@ -12,6 +12,7 @@ import WishList from "../views/Product/WishList";
 import ListProducts from "../views/Category/ListProducts";
 import Signup from "../views/Signup";
 import Signin from '../views/Signin';
+import Cart from '../views/Cart';
 
 const routes = [
   {
@@ -88,6 +89,11 @@ const routes = [
     path: '/wishlist',
     name: 'WishList',
     component: WishList
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: Cart
   }
 ]
 
