@@ -19,7 +19,6 @@
   </div>
 </template>
 <script>
-const axios = require("axios");
 export default {
   data() {
     return {
@@ -63,50 +62,6 @@ export default {
     configureStripe() {
       /* global Stripe */
       this.stripe = Stripe(this.stripeAPIToken);
-    },
-
-    // get all cart Items for the user
-    getAllCartItems() {
-      axios.get(`${this.baseURL}cart/?token=${this.token}`).then(
-        (response) => {
-          if (response.status == 200) {
-            let cartItems = response.data.cartItems;
-            // for each cart item populate the checkoutBodyArray Array
-            cartItems.forEach((item) => {
-              this.checkoutBodyArray.push({
-                productName: item.product.name,
-                quantity: item.quantity,
-                price: item.product.price,
-                productId: item.product.id,
-              });
-            });
-          }
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
-    },
-
-    // checkout
-    goToCheckout() {
-      // first call the create-checkout-session with checkoutBodyArray
-      axios
-        .post(
-          `${this.baseURL}order/create-checkout-session`,
-          this.checkoutBodyArray
-        )
-        .then((response) => {
-          // receive the sessionId in response
-          localStorage.setItem("sessionId", response.data.sessionId);
-          return response.data;
-        })
-        .then((session) => {
-          // redirect to checkout page of stripe
-          return this.stripe.redirectToCheckout({
-            sessionId: session.sessionId,
-          });
-        });
     },
   },
   mounted() {
