@@ -23,7 +23,12 @@
           </div>
 
           <div class="input-group col-md-3 col-4 p-0">
-            <button class="btn" id="add-to-cart-button" @click="addToCart">
+            <button
+              class="btn"
+              type="button"
+              id="add-to-cart-button"
+              @click="addToCart"
+            >
               Add to Cart
             </button>
           </div>
@@ -118,6 +123,7 @@ export default {
               text: "Product added in cart",
               icon: "success",
             });
+            this.$emit("fetchData");
           }
         })
         .catch((err) => console.log("err", err));

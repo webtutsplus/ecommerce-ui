@@ -41,12 +41,13 @@ export default {
       await axios
         .post(`${this.baseURL}user/signIn`, body)
         .then((res) => {
-          this.$router.replace("/");
           localStorage.setItem("token", res.data.token);
           swal({
             text: "Login successful",
             icon: "success",
           });
+          this.$emit("fetchData");
+          this.$router.push({ name: "Home" });
         })
         .catch((err) => console.log("err", err));
     },
