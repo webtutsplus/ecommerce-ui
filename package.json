@@ -10,6 +10,7 @@
   "dependencies": {
     "axios": "^0.22.0",
     "core-js": "^3.6.5",
+    "stripe": "^8.201.0",
     "sweetalert": "^2.1.2",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"

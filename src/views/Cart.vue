@@ -61,11 +61,14 @@
     <!-- display the price -->
     <div class="total-cost pt-2 text-right">
       <h5>Total : ${{ totalCost.toFixed(2) }}</h5>
+      <button type="button" class="btn btn-primary confirm" @click="checkout">
+        Confirm order
+      </button>
     </div>
   </div>
 </template>
 <script>
-import axios from "axios";
+import axios from 'axios';
 export default {
   data() {
     return {
@@ -74,7 +77,7 @@ export default {
       totalCost: 0,
     };
   },
-  props: ["baseURL"],
+  props: ['baseURL'],
   methods: {
     // fetch All items in cart
     listCartItems() {
@@ -85,7 +88,7 @@ export default {
           this.cartItems = result.cartItems;
           this.totalCost = result.totalCost;
         })
-        .catch((err) => console.log("err", err));
+        .catch((err) => console.log('err', err));
     },
     deleteItem(itemId) {
       axios
@@ -95,11 +98,15 @@ export default {
             this.$router.go(0);
           }
         })
-        .catch((err) => console.log("err", err));
+        .catch((err) => console.log('err', err));
+    },
+
+    checkout() {
+      this.$router.push({ name: 'Checkout' });
     },
   },
   mounted() {
-    this.token = localStorage.getItem("token");
+    this.token = localStorage.getItem('token');
     this.listCartItems();
   },
 };
