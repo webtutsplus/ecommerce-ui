@@ -21,8 +21,8 @@ export default {
   components: { Navbar, Footer },
   data() {
     return {
-      // baseURL: "https://limitless-lake-55070.herokuapp.com/",
-      baseURL: 'http://localhost:8080/',
+      baseURL: 'https://shrouded-lowlands-08872.herokuapp.com/',
+      //baseURL: 'http://localhost:8080/',
       products: null,
       categories: null,
       cartCount: 0,
