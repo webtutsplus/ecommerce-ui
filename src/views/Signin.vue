@@ -21,10 +21,10 @@
   </div>
 </template>
 <script>
-import axios from "axios";
-import swal from "sweetalert";
+import axios from 'axios';
+import swal from 'sweetalert';
 export default {
-  props: ["baseURL"],
+  props: ['baseURL'],
   data() {
     return {
       email: null,
@@ -39,17 +39,17 @@ export default {
         password: this.password,
       };
       await axios
-        .post(`${this.baseURL}user/signIn`, body)
+        .post(`${this.baseURL}user/signin`, body)
         .then((res) => {
-          localStorage.setItem("token", res.data.token);
+          localStorage.setItem('token', res.data.token);
           swal({
-            text: "Login successful",
-            icon: "success",
+            text: 'Login successful',
+            icon: 'success',
           });
-          this.$emit("fetchData");
-          this.$router.push({ name: "Home" });
+          this.$emit('fetchData');
+          this.$router.push({ name: 'Home' });
         })
-        .catch((err) => console.log("err", err));
+        .catch((err) => console.log('err', err));
     },
   },
 };
