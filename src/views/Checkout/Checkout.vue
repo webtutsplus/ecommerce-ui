@@ -15,7 +15,7 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      stripeAPIToken: '<stripe token>',
+      stripeAPIToken: process.env.VUE_APP_STRIPETOKEN,
       stripe: '',
       token: null,
       checkoutBodyArray: [],
